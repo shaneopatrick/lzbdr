@@ -1,0 +1,86 @@
+header.masthead {
+    position: relative;
+    padding-top: 150px;
+    padding-bottom: 150px;
+    background-color: @themeDark;
+    .background-cover;
+    .background-fixed;
+    .masthead-img {
+        max-width: 150px;
+        max-height: 150px;
+    }
+    .masthead-title {
+        font-size: 4rem;
+        line-height: 4rem;
+        .heading-font;
+    }
+    .masthead-subtitle {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+    }
+    .scroll-down {
+        position: absolute;
+        bottom: 20px;
+        width: 100%;
+        text-align: center;
+        .btn {
+            font-size: 30px;
+            line-height: 50px;
+            width: 50px;
+            height: 50px;
+            padding: 0;
+            letter-spacing: normal;
+            color: white;
+            border: 2px solid white;
+            border-radius: 100% !important;
+            .transition-all;
+            &:hover {
+                color: fade(white, 50%) !important;
+                border-color: fade(white, 50%);
+                outline: none;
+            }
+        }
+    }
+    @media (min-width: 992px) {
+        height: 100vh;
+        min-height: 700px;
+        padding-top: 0;
+        padding-bottom: 0;
+        .masthead-img {
+            max-width: 250px;
+            max-height: 250px;
+        }
+        .masthead-title {
+            font-size: 5rem;
+            line-height: 5rem;
+        }
+        .masthead-subtitle {
+            font-size: 2rem;
+            line-height: 2rem;
+        }
+    }
+}
+
+header.video {
+    background: transparent;
+    .overlay {
+        position: absolute;
+        z-index: 998;
+        width: 100%;
+        height: 100%;
+        opacity: 0;
+        background: #000;
+    }
+    .container,
+    .scroll-down {
+        z-index: 999;
+    }
+}
+
+@media(min-width: 992px) {
+    header.video {
+        .overlay {
+            opacity: .5;
+        }
+    }
+}

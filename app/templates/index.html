@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lazybirder</title>
+
+    <!-- <link href="{{url_for('static', filename='../static/css/bootstrap.min.css')}}" rel="stylesheet" rel="stylesheet"> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='../static/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- <link href="{{url_for('static', filename='../static/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css"> -->
+
+    <!-- Custom fonts for this theme -->
+    <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Bitter:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,500,700,800,900' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{{url_for('static', filename='../static/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.theme.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.transitions.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/animate.css/animate.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/device-mockups/device-mockups.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this theme -->
+    <!-- Uncomment the color scheme you want to use! Red is chosen by default! -->
+    <link href="{{url_for('static', filename='../static/css/vitality-red.css')}}" rel="stylesheet" type="text/css">
+    <!-- <link href="css/vitality-aqua.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-blue.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-green.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-orange.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-pink.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-purple.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-tan.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-turquoise.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-yellow.css" rel="stylesheet" type="text/css"> -->
+
+    <!-- Temporary navbar container fix -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse navbar-expanded" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="#page-top">
+                <img class="img-fluid" src="../static/img/agency/head-logo.svg" alt="">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#identify">ID Bird</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#how">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#references">References</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#donate">Give</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Masthead -->
+    <header class="masthead video">
+        <div class="overlay"></div>
+        <div class="container h-100">
+            <div class="row h-100" style="padding-top: 300px;">
+                <div class="col-12 my-auto text-center text-white">
+                    <img style="width:600px; height:200px;" src="../static/img/agency/big-logo.svg" alt="">
+                    <!-- <div class="masthead-title">Lazybirder</div> -->
+                    <hr class="colored">
+                    <div class="masthead-subtitle">Photo identification for 200 bird species</div>
+                </div>
+            </div>
+        </div>
+        <div class="scroll-down">
+            <a class="btn page-scroll" href="#identify">
+                <i class="fa fa-angle-down fa-fw"></i>
+            </a>
+        </div>
+    </header>
+
+    <!-- Identify Section -->
+    <section class="page-section" id="identify">
+        <div class="container-fluid">
+            <div class="wow fadeIn text-center">
+                <h1>An app for the bird enthusiest</h1>
+                <p class="mb-0">[... who doesn't have time to become a bird expert ...]</p>
+            </div>
+            <hr class="colored">
+            <br>
+            <br>
+            <div class="row text-center">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="wow fadeIn px-4 pb-4 pb-lg-0 h-100" data-wow-delay=".2s">
+                        <i class="fa fa-camera fa-4x"></i>
+                        <h3>Identify Bird</h3>
+                        <p class="mb-0">Begin by clicking the button below. <br>For best results crop photo so the bird fills most of the frame.</p>
+                        <br>
+                        <br>
+                        <form action="/results" method="POST" enctype="multipart/form-data" id="submit-form">
+                            <div id="wrapper" style="margin-top: 20px;">
+                                <label class="btn btn-secondary">
+                                Choose Photo<input id="fileUpload" type="file" name="file" style="display: none;">
+                                </label>
+                                <div id="image-holder" class="img-responsive"></div>
+                                <br>
+                                <input id="submit-button2" type="submit" class="btn btn-secondary" value="Submit">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quote -->
+    <section class="call-to-action" style="background-image: url('../static/img/agency/backgrounds/bg-quote.jpg');">
+        <div class="container wow fadeIn">
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <strong><span class="quote">In order to <span class="text-primary">see</span> birds it is <span class="text-primary">necessary</span><br> to become <span class="text-primary">part of </span> the silence.</strong> — Robert Lynd</span>
+                    <hr class="colored">
+                    <a class="btn btn-primary page-scroll" href="#how">How It Works</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- How it works Section -->
+    <section class="page-section services" id="how">
+        <div class="container">
+            <div class="text-center wow fadeIn">
+                <h2>How We Identify Birds</h2>
+                <hr class="colored">
+                <p class="mb-0">Here is an overview of how the app works.</p>
+            </div>
+            <div class="row mt-4">
+                <!-- Service Item 1 -->
+                <div class="col-lg-4 wow fadeIn" data-wow-delay=".2s">
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="fa fa-cogs" aria-hidden="true"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Build Model</h3>
+                            <ul>
+                                <li>blah blah blah</li>
+                                <li>something something something</li>
+                                <li>thousands of images</li>
+                                <li>neural network</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Item 2 -->
+                <div class="col-lg-4 wow fadeIn" data-wow-delay=".4s">
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="fa fa-cloud-upload"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Upload Picture</h3>
+                            <ul>
+                                <li>blah blah blah</li>
+                                <li>something something something</li>
+                                <li>take picture</li>
+                                <li>network does the work</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Service Item 3 -->
+                <div class="col-lg-4 wow fadeIn" data-wow-delay=".6s">
+                    <div class="media">
+                        <div class="pull-left">
+                            <i class="fa fa-bar-chart"></i>
+                        </div>
+                        <div class="media-body">
+                            <h3 class="media-heading">Predict</h3>
+                            <ul>
+                                <li>blah blah blah</li>
+                                <li>something something something</li>
+                                <li>percent for each bird</li>
+                                <li>suggest most likely</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- CNN Section -->
+    <section class="page-section pricing" style="background-image: url('../static/img/agency/backgrounds/bg-cnn.jpg')">
+        <div class="container wow fadeIn">
+            <div class="text-center">
+                <h2>More on Neural Networks</h2>
+                <hr class="colored">
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, quae, laborum, voluptate delectus odio doloremque error porro obcaecati nemo animi ducimus quaerat nostrum? Ab molestiae eaque et atque architecto reiciendis.</p>
+            </div>
+            <div class="row">
+                <!-- Pricing Table 1 -->
+                <div class="col-md-4">
+                    <div class="pricing-item featured-first">
+                        <h3>Visual 1</h3>
+                        <hr class="colored">
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item">60 Users</li>
+                            <li class="list-group-item">Unlimited Forums</li>
+                            <li class="list-group-item">Unlimited Reports</li>
+                            <li class="list-group-item">3,000 Entries per Month</li>
+                            <li class="list-group-item">200 MB Storage</li>
+                            <li class="list-group-item">Unlimited Support</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Pricing Table 2 -->
+                <div class="col-md-4">
+                    <div class="pricing-item featured">
+                        <h3>Visual 2</h3>
+                        <hr class="colored">
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item">60 Users</li>
+                            <li class="list-group-item">Unlimited Forums</li>
+                            <li class="list-group-item">Unlimited Reports</li>
+                            <li class="list-group-item">3,000 Entries per Month</li>
+                            <li class="list-group-item">200 MB Storage</li>
+                            <li class="list-group-item">Unlimited Support</li>
+                        </ul>
+                    </div>
+                </div>
+                <!-- Pricing Table 3 -->
+                <div class="col-md-4">
+                    <div class="pricing-item featured-last">
+                        <h3>Visual 3</h3>
+                        <hr class="colored">
+                        <ul class="list-group mb-3">
+                            <li class="list-group-item">60 Users</li>
+                            <li class="list-group-item">Unlimited Forums</li>
+                            <li class="list-group-item">Unlimited Reports</li>
+                            <li class="list-group-item">3,000 Entries per Month</li>
+                            <li class="list-group-item">200 MB Storage</li>
+                            <li class="list-group-item">Unlimited Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- References Section -->
+    <section class="page-section testimonials bg-faded" id="references">
+        <div class="container wow fadeIn">
+            <div class="row">
+                <div class="col-lg-10 offset-lg-1">
+                    <h3 class="m0" style="padding-bottom: 75px;">Made Possible By:</h3>
+                    <div class="testimonials-carousel">
+                        <!-- Testimonial Item 1 -->
+                        <div class="item mb-4">
+                            <p class="lead">Birds of North America</p>
+                            <hr class="colored">
+                            <p>The Birds of North America (P. Rodewald, Ed.). Ithaca: Cornell Laboratory of Ornithology; Retrieved from The Birds of North America: <a href='https://birdsna.org'>https://birdsna.org</a>; AUG 2015.</p>
+                        </div>
+                        <!-- Testimonial Item 2 -->
+                        <div class="item mb-4">
+                            <p class="lead">Second reference</p>
+                            <hr class="colored">
+                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem amet rem minus dolorum, facere in soluta explicabo, unde eveniet illo vel, nemo nostrum atque nesciunt facilis quaerat quasi reprehenderit dicta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Donate Section -->
+    <section class="page-section signup-form bg-inverse text-white" id="donate">
+        <div class="container text-center">
+            <h3 class="m0">Bird Conservation</h3>
+            <hr class="colored">
+            <p style="font-size: 24px;">Contribute to protecting birds and thier natural habitats.</p>
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <i class="fa fa-angle-double-down fa-3x" aria-hidden="true"></i>
+                    <br>
+                    <br>
+                    <a href="#" class="btn btn-primary">Donate</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer" style="background-image: url('../static/img/agency/backgrounds/bg-footer.jpg')">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12 footer-contact-details">
+                    <h4><i class="fa fa-map-marker"></i> HQ</h4>
+                    <p>Denver, CO</p>
+                </div>
+            </div>
+            <div class="row footer-social">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fa fa-instagram fa-fw fa-2x"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fa fa-github fa-fw fa-2x"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">Built with Bootstrap 4 using a theme provided by {wrap}bootstrap<br>&copy; 2017 Lazybirder</p>
+        </div>
+    </footer>
+
+
+    <!-- scripts for hiding buttons -->
+
+    <script>
+        // $('#submit-button').hide();
+        $('#fileUpload').click(function(){
+            alert('hello!')
+            $('#submit-button').show();
+        });
+    </script>
+
+    <!-- scripts for image preview -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script>
+            $(document).ready(function() {
+                    $("#fileUpload").on('change', function() {
+                      //Get count of selected files
+                      var countFiles = $(this)[0].files.length;
+                      var imgPath = $(this)[0].value;
+                      var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+                      var image_holder = $("#image-holder");
+                      image_holder.empty();
+                      if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+                        if (typeof(FileReader) != "undefined") {
+                          //loop for each file selected for uploaded.
+                          for (var i = 0; i < countFiles; i++)
+                          {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                              $("<img />", {
+                                "src": e.target.result,
+                                "class": "img-responsive",
+                                "width": "600"
+                              }).appendTo(image_holder);
+                            }
+                            image_holder.show();
+                            reader.readAsDataURL($(this)[0].files[i]);
+                          }
+                        } else {
+                          alert("This browser does not support FileReader.");
+                        }
+                      } else {
+                        alert("Pls select only images");
+                      }
+                    });
+                  });
+        </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{url_for('static', filename='../static/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/tether/tether.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{url_for('static', filename='../static/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/owl-carousel/owl.carousel.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/vide/jquery.vide.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/mixitup/mixitup.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/wowjs/wow.min.js')}}"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="{{url_for('static', filename='../static/js/contact_me.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/jqBootstrapValidation.js')}}"></script>
+
+    <!-- Custom scripts for this theme -->
+    <script src="{{url_for('static', filename='../static/js/vitality.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/vitality-mixitup.js')}}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,53 @@
+// Button Styling Overrides
+.btn {
+    font-weight: 900;
+    padding: 12px 18px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    border-radius: 0;
+}
+
+.btn-primary {
+    border: 1px solid white;
+    background-color: transparent;
+    &:hover,
+    &:focus {
+        color: @themePrimary;
+        border-color: white;
+        background-color: white;
+    }
+}
+
+.btn-secondary {
+    border: 1px solid @themeDark;
+    background-color: transparent;
+    &:hover,
+    &:focus {
+        color: white;
+        border-color: @themePrimary;
+        background-color: @themePrimary;
+    }
+}
+
+button {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+// Color Utility Overrides
+.text-primary {
+    color: @themePrimary !important;
+}
+
+a.text-primary {
+    color: @themePrimary !important;
+    &:hover,
+    &:focus {
+        color: darken(@themePrimary, 15%) !important;
+    }
+}
+
+.bg-inverse {
+    background-color: @themeDark !important;
+}

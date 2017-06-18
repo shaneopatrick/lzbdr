@@ -1,0 +1,39 @@
+.testimonials {
+    text-align: center;
+    .testimonials-carousel {
+        .item {
+            .testimonial-img {
+                display: inline-block;
+                width: 50px;
+                height: 50px;
+                margin-right: 10px;
+                img {
+                    vertical-align: baseline;
+                }
+            }
+            .testimonial-author {
+                display: inline-block;
+                .name {
+                    .heading-font;
+                }
+                hr.colored {
+                    max-width: 50px;
+                    margin: 3px auto;
+                }
+                p {
+                    margin: 0;
+                }
+                .stars {
+                    color: #f1c40f;
+                }
+            }
+        }
+    }
+    @media (min-width: 992px) {
+        .testimonials-carousel {
+            .item {
+                padding: 0 100px;
+            }
+        }
+    }
+}

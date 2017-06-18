@@ -1,0 +1,28 @@
+.call-to-action {
+    padding: 100px 0;
+    text-align: center;
+    color: white;
+    background-color: $themeDark;
+    @include background-cover;
+    @include background-fixed;
+    span.quote {
+        font-size: 30px;
+        font-weight: 300;
+        line-height: 32px;
+        display: block;
+    }
+    @media (min-width: 768px) {
+        padding: 150px 0;
+        span.quote {
+            font-size: 36px;
+            line-height: 38px;
+        }
+    }
+    @media (min-width: 992px) {
+        padding: 300px 0;
+        span.quote {
+            font-size: 40px;
+            line-height: 42px;
+        }
+    }
+}

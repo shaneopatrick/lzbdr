@@ -1,0 +1,56 @@
+.floating-label-form-group {
+    position: relative;
+    margin-bottom: 0;
+    padding-bottom: 0.5em;
+    border-bottom: 1px solid lighten($themeDark, 75%);
+    input,
+    textarea {
+	    z-index: 1;
+	    position: relative;
+	    padding-right: 0;
+	    padding-left: 0;
+	    border: none;
+	    border-radius: 0;
+	    font-size: 1.5em;
+	    background: none;
+	    box-shadow: none !important;
+	    resize: none;
+    }
+    label {
+	    display: block;
+	    z-index: 0;
+	    position: relative;
+	    top: 2em;
+	    margin: 0;
+	    font-size: 0.85em;
+	    line-height: 1.764705882em;
+	    vertical-align: middle;
+	    vertical-align: baseline;
+	    opacity: 0;
+	    -webkit-transition: top 0.5s ease,opacity 0.5s ease;
+	    -moz-transition: top 0.5s ease,opacity 0.5s ease;
+	    -ms-transition: top 0.5s ease,opacity 0.5s ease;
+	    transition: top 0.5s ease,opacity 0.5s ease;
+    }
+    &::not(:first-child) {
+	    padding-left: 14px;
+	    border-left: 1px solid lighten($themeDark, 75%);
+    }
+}
+
+.floating-label-form-group-with-value {
+	label {
+	    top: 0;
+	    opacity: 1;
+	}
+}
+
+.floating-label-form-group-with-focus {
+	label {
+	    color: $themePrimary;
+	}
+}
+
+form .row:first-child .floating-label-form-group {
+    border-top: 1px solid lighten($themeDark, 75%);
+}

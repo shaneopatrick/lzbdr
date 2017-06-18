@@ -1,0 +1,42 @@
+body {
+    font-weight: 300;
+    @include sans-serif-font;
+}
+
+a {
+    color: $themePrimary;
+    @include transition-all;
+    &:hover,
+    &:focus {
+        color: darken($themePrimary, 15%);
+        text-decoration: none;
+    }
+}
+
+p {
+    font-size: 18px;
+    line-height: 1.5;
+}
+
+p.lead {
+    font-size: 24px;
+    @include heading-font;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    @include heading-font;
+}
+
+@media (min-width: 768px) {
+    h1 {
+        font-size: 52px;
+    }
+    h2 {
+        font-size: 50px;
+    }
+}

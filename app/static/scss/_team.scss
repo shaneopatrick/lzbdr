@@ -1,0 +1,52 @@
+.team-carousel {
+    .item {
+        position: relative;
+        margin-right: 15px;
+        margin-left: 15px;
+        .overlay {
+            position: absolute;
+            z-index: 1;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: .5;
+            background-color: $themeDark;
+        }
+        .team-caption {
+            position: absolute;
+            z-index: 2;
+            top: 50%;
+            left: 50%;
+            width: 100%;
+            margin: auto;
+            padding: 15px;
+            -webkit-transform: translate(-50%, -50%);
+            -ms-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+            color: fade-out(white, 0.3);
+            h3 {
+                margin: 0;
+            }
+            hr {
+                max-width: 50px;
+                margin: 5px auto;
+            }
+            p {
+                margin: 0;
+            }
+            .list-team-social {
+                margin-top: 5px;
+                li {
+                    a {
+                        color: fade-out(white, 0.3);
+                        &:hover,
+                        &:focus {
+                            color: white;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

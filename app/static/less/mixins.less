@@ -1,0 +1,38 @@
+.transition-all() {
+    -webkit-transition: all .5s;
+    -moz-transition: all .5s;
+    transition: all .5s;
+}
+
+.background-cover() {
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+// Fixed Background Mixin
+.background-fixed() {
+    background-attachment: scroll;
+    @media (min-width: 1024px) {
+        background-attachment: fixed;
+    }
+    // Set background to scroll on landscape touch devices
+    @media only screen and (min-device-width: 768px) and (max-device-width: 1366px) and (-webkit-min-device-pixel-ratio: 2) {
+        background-attachment: scroll;
+    }
+}
+
+.sans-serif-font() {
+    font-family: 'Roboto', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.serif-font() {
+    font-family: 'Cardo', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.heading-font() {
+    font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    text-transform: uppercase;
+}

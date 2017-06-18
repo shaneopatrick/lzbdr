@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lazybirder</title>
+
+    <!-- <link href="{{url_for('static', filename='../static/css/bootstrap.min.css')}}" rel="stylesheet" rel="stylesheet"> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='../static/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Custom fonts for this theme -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'> -->
+
+    <link href='https://fonts.googleapis.com/css?family=Bitter:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,500,700,800,900' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{{url_for('static', filename='../static/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.theme.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.transitions.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/animate.css/animate.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/device-mockups/device-mockups.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this theme -->
+    <!-- Uncomment the color scheme you want to use! Red is chosen by default! -->
+    <link href="{{url_for('static', filename='../static/css/vitality-red.css')}}" rel="stylesheet" type="text/css">
+    <!-- <link href="css/vitality-aqua.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-blue.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-green.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-orange.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-pink.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-purple.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-tan.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-turquoise.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-yellow.css" rel="stylesheet" type="text/css"> -->
+
+    <!-- Temporary navbar container fix -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse navbar-expanded" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="/">
+                <img class="img-fluid" src="../static/img/agency/head-logo.svg" alt="">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#identify">Home</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#how">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#references">References</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#donate">Give</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#pricing">Pricing</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#contact">Contact</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- <section class="page-section bg-faded" id="work">
+        <div class="container text-center wow fadeIn">
+            <h2>Our Work</h2>
+            <hr class="colored">
+            <p>Here are some examples of our work.</p>
+        </div>
+    </section> -->
+
+    <!-- Top Section -->
+    <!-- <section class="page-section signup-form bg-inverse text-white" id="top">
+        <div class="container text-center" style="padding-top: 100px;">
+            <h2 class="m0">Your Bird</h2>
+            <hr class="colored">
+            <p>Below are the most likely bird species based on your photo</p>
+        </div>
+    </section> -->
+
+    <!-- Results Carousel -->
+    <div class="portfolio-carousel wow fadeIn owl-carousel owl-theme" id='results'>
+
+        <!-- Portfolio Carousel Item 1 -->
+        <div class="item" style="background-image: url('../static/img/agency/results/carousel/forest-gs-min.jpg')">
+            <div class="container-fluid">
+                <div class="row h-100">
+                    <div class="col-md-5 push-md-7 my-auto">
+                        <div class="project-details">
+                            <span class="project-name">{{bird1['name']}}</span>
+                            <span class="project-description"><strong>{{how_conf['conf1']}} ({{how_conf['perc1']}}%).</strong></span>
+                            <hr class="colored">
+                            <p>{{bird1['summary_preview']}}</p>
+                            <a href="#portfolioModal1" data-toggle="modal" class="btn btn-primary">View Details <i class="fa fa-long-arrow-right fa-fw"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 pull-md-5 hidden-xs my-auto">
+                        <div class="device-container">
+                            <div class="device-mockup macbook portrait black">
+                                <div class="device">
+                                    <div class="screen">
+                                        <img class="img-fluid" src="{{pics1['b1p0']}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Carousel Item 2 -->
+        <div class="item" style="background-image: url('../static/img/agency/results/carousel/reeds-gs-min.jpg')">
+            <div class="container-fluid">
+                <div class="row h-100">
+                    <div class="col-md-5 push-md-7 my-auto">
+                        <div class="project-details">
+                            <span class="project-name">{{bird2['name']}}</span>
+                            <span class="project-description"><strong>{{how_conf['conf2']}} ({{how_conf['perc2']}}%).</strong></span>
+                            <hr class="colored">
+                            <p>{{bird2['summary_preview']}}</p>
+                            <a href="#portfolioModal2" data-toggle="modal" class="btn btn-primary">View Details <i class="fa fa-long-arrow-right fa-fw"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 pull-md-5 hidden-xs my-auto">
+                        <div class="device-container">
+                            <div class="device-mockup macbook portrait black">
+                                <div class="device">
+                                    <div class="screen">
+                                        <img class="img-fluid" src="{{pics2['b2p0']}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Portfolio Carousel Item 3 -->
+        <div class="item" style="background-image: url('../static/img/agency/results/carousel/desert-gs-min.jpg')">
+            <div class="container-fluid">
+                <div class="row h-100">
+                    <div class="col-md-5 push-md-7 my-auto">
+                        <div class="project-details">
+                            <span class="project-name">{{bird3['name']}}</span>
+                            <span class="project-description"><strong>{{how_conf['conf3']}} ({{how_conf['perc3']}}%).</strong></span>
+                            <hr class="colored">
+                            <p>{{bird3['summary_preview']}}</p>
+                            <a href="#portfolioModal3" data-toggle="modal" class="btn btn-primary">View Details <i class="fa fa-long-arrow-right fa-fw"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-md-7 pull-md-5 hidden-xs my-auto">
+                        <div class="device-container">
+                            <div class="device-mockup macbook portrait black">
+                                <div class="device">
+                                    <div class="screen">
+                                        <img class="img-fluid" src="{{pics3['b3p0']}}" alt="">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Donate Section -->
+    <section class="page-section signup-form bg-inverse text-white" id="return">
+        <div class="container text-center">
+            <!-- <h3 class="m0">Bird Conservation</h3>
+            <hr class="colored">
+            <span class="quote">Contribute to protecting birds and thier natural habitats.</span> -->
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <br>
+                    <a href="/" class="btn btn-primary">Return Home</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    <!-- Footer -->
+    <footer class="footer" style="background-image: url('../static/img/agency/backgrounds/bg-footer.jpg')">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12 footer-contact-details">
+                    <h4><i class="fa fa-map-marker"></i> HQ</h4>
+                    <p>Denver, CO</p>
+                </div>
+            </div>
+            <div class="row footer-social">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fa fa-instagram fa-fw fa-2x"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fa fa-github fa-fw fa-2x"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">Built with Bootstrap 4 using a theme provided by {wrap}bootstrap<br>&copy; 2017 Lazybirder</p>
+        </div>
+    </footer>
+
+    <!-- Portfolio Modals -->
+    <!-- Example Modal 1: Corresponds with Portfolio Carousel Item 1 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal1" tabindex="-1" role="dialog" aria-hidden="true" style="background-image: url('../static/img/agency/results/carousel/tree-gs-min.jpg')">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <h2>{{bird1['name']}}</h2>
+                                <hr class="colored">
+                                <p style="font-size: 24px;"> Conservation Status: <strong>{{bird1['conserv_status']}}</strong></p>
+                                <p>{{bird1['summary']}}</p>
+                            </div>
+                            <div class="col-lg-8 offset-lg-2">
+                                <div class="device-mockup macbook portrait black">
+                                    <div class="device">
+                                        <div class="screen">
+
+                                            <!-- Modal Mockup Option 1: Single Image (Uncomment Below to Use) -->
+                                            <!-- <img src="../static/img/agency/results/carousel/screen-1a.jpg" class="img-fluid" alt=""> -->
+
+                                            <!-- Modal Mockup Option 2: Carousel (Example In Use Below) -->
+                                            <div class="mockup-carousel">
+                                                <div class="item">
+                                                    <img src="{{pics1['b1p1']}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{pics1['b1p2']}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{pics1['b1p3']}}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 offset-lg-2">
+                                <br>
+                                <h5>Click for more info:</h5>
+                                <p style="font-size: 24px;"><strong><a href="{{bird1['aatb_link']}}" target="_blank">All About Birds</a> | <a href="{{bird1['wiki_link']}}" target="_blank">Wikipedia</a></strong></p>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example Modal 2: Corresponds with Portfolio Carousel Item 2 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal2" tabindex="-1" role="dialog" aria-hidden="true" style="background-image: url('../static/img/agency/results/carousel/grass-gs-min.jpg')">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <h2>{{bird2['name']}}</h2>
+                                <hr class="colored">
+                                <p style="font-size: 24px;"> Conservation Status: <strong>{{bird2['conserv_status']}}</strong></p>
+                                <p>{{bird2['summary']}}</p>
+                            </div>
+                            <div class="col-lg-8 offset-lg-2">
+                                <div class="device-mockup macbook portrait black">
+                                    <div class="device">
+                                        <div class="screen">
+
+                                            <!-- Modal Mockup Option 1: Single Image (Uncomment Below to Use) -->
+                                            <!-- <img src="../static/img/agency/results/carousel/screen-2a.jpg" class="img-fluid" alt=""> -->
+
+                                            <!-- Modal Mockup Option 2: Carousel (Example In Use Below) -->
+                                            <div class="mockup-carousel">
+                                                <div class="item">
+                                                    <img src="{{pics2['b2p1']}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{pics2['b2p2']}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{pics2['b2p3']}}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 offset-lg-2">
+                                <br>
+                                <h5>Click for more info:</h5>
+                                <p style="font-size: 24px;"><strong><a href="{{bird2['aatb_link']}}" target="_blank">All About Birds</a> | <a href="{{bird2['wiki_link']}}" target="_blank">Wikipedia</a></strong></p>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Example Modal 3: Corresponds with Portfolio Carousel Item 3 -->
+    <div class="portfolio-modal modal fade" id="portfolioModal3" tabindex="-1" role="dialog" aria-hidden="true" style="background-image: url('../static/img/agency/results/carousel/dunes-gs-min.jpg')">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <h2>{{bird3['name']}}</h2>
+                                <hr class="colored">
+                                <p style="font-size: 24px;"> Conservation Status: <strong>{{bird3['conserv_status']}}</strong></p>
+                                <p>{{bird3['summary']}}</p>
+                            </div>
+                            <div class="col-lg-8 offset-lg-2">
+                                <div class="device-mockup macbook portrait black">
+                                    <div class="device">
+                                        <div class="screen">
+
+                                            <!-- Modal Mockup Option 1: Single Image (Uncomment Below to Use) -->
+                                            <!-- <img src="../static/img/agency/results/carousel/screen-2a.jpg" class="img-fluid" alt=""> -->
+
+                                            <!-- Modal Mockup Option 2: Carousel (Example In Use Below) -->
+                                            <div class="mockup-carousel">
+                                                <div class="item">
+                                                    <img src="{{pics3['b3p1']}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{pics3['b3p2']}}" class="img-fluid" alt="">
+                                                </div>
+                                                <div class="item">
+                                                    <img src="{{pics3['b3p3']}}" class="img-fluid" alt="">
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 offset-lg-2">
+                                <br>
+                                <h5>Click for more info:</h5>
+                                <p style="font-size: 24px;"><strong><a href="{{bird3['aatb_link']}}" target="_blank">All About Birds</a> | <a href="{{bird3['wiki_link']}}" target="_blank">Wikipedia</a></strong></p>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- scripts for image preview -->
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
+    </script>
+    <script>
+            $(document).ready(function() {
+                    $("#fileUpload").on('change', function() {
+                      //Get count of selected files
+                      var countFiles = $(this)[0].files.length;
+                      var imgPath = $(this)[0].value;
+                      var extn = imgPath.substring(imgPath.lastIndexOf('.') + 1).toLowerCase();
+                      var image_holder = $("#image-holder");
+                      image_holder.empty();
+                      if (extn == "gif" || extn == "png" || extn == "jpg" || extn == "jpeg") {
+                        if (typeof(FileReader) != "undefined") {
+                          //loop for each file selected for uploaded.
+                          for (var i = 0; i < countFiles; i++)
+                          {
+                            var reader = new FileReader();
+                            reader.onload = function(e) {
+                              $("<img />", {
+                                "src": e.target.result,
+                                "class": "img-responsive",
+                                "width": "500"
+                              }).appendTo(image_holder);
+                            }
+                            image_holder.show();
+                            reader.readAsDataURL($(this)[0].files[i]);
+                          }
+                        } else {
+                          alert("This browser does not support FileReader.");
+                        }
+                      } else {
+                        alert("Pls select only images");
+                      }
+                    });
+                  });
+        </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{url_for('static', filename='../static/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/tether/tether.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{url_for('static', filename='../static/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/owl-carousel/owl.carousel.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/vide/jquery.vide.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/mixitup/mixitup.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/wowjs/wow.min.js')}}"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="{{url_for('static', filename='../static/js/contact_me.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/jqBootstrapValidation.js')}}"></script>
+
+    <!-- Custom scripts for this theme -->
+    <script src="{{url_for('static', filename='../static/js/vitality.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/vitality-mixitup.js')}}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,51 @@
+html,
+body {
+    height: 100%;
+}
+
+hr {
+    max-width: 100px;
+    height: 2px;
+    border-top: 1px solid white;
+    border-bottom: 1px solid white;
+}
+
+hr.colored {
+    border-color: $themePrimary;
+}
+
+@media (min-width: 992px) {
+    hr {
+        max-width: 150px;
+    }
+}
+
+section.page-section {
+    padding: 100px 0;
+}
+
+@media (max-width: 767px) {
+    section.page-section {
+        padding: 75px 0;
+    }
+}
+
+::-webkit-input-placeholder {
+    font-weight: 300;
+    @include sans-serif-font;
+}
+
+:-moz-placeholder {
+    font-weight: 300;
+    @include sans-serif-font;
+}
+
+::-moz-placeholder {
+    font-weight: 300;
+    @include sans-serif-font;
+}
+
+:-ms-input-placeholder {
+    font-weight: 300;
+    @include sans-serif-font;
+}

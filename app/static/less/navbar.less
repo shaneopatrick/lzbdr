@@ -1,0 +1,88 @@
+#mainNav {
+    border: none;
+    border-bottom: 1px solid fade(white, 10%);
+    background-color: @themeDark;
+    padding: 10px 0;
+    min-height: 68px;
+    .navbar-toggler {
+        font-size: 14px;
+        padding-top: 15px;
+        padding-bottom: 15px;
+        padding-left: 15px;
+        padding-right: 15px;
+        color: white;
+        &:hover,
+        &:focus {
+            color: @themeDark;
+            background-color: white;
+        }
+    }
+    .navbar-brand {
+        font-size: 24px;
+        text-decoration: none;
+        opacity: 1;
+        color: white;
+        margin-left: 16px;
+        .transition-all;
+        .heading-font;
+        img {
+            height: 40px;
+        }
+    }
+    .navbar-collapse {
+        .navbar-nav {
+            > .nav-item {
+                > .nav-link {
+                    padding: 15px;
+                    color: white;
+                    &:hover,
+                    &:focus {
+                        color: fade(white, 50%);
+                    }
+                    &.active,
+                    &.active:hover,
+                    &.active:focus {
+                        color: @themePrimary;
+                    }
+                }
+            }
+        }
+    }
+    @media (min-width: 992px) {
+        padding: 30px 0;
+        -webkit-transition: padding .5s;
+        -moz-transition: padding .5s;
+        transition: padding .5s;
+        border: 0;
+        background-color: transparent;
+        &.navbar-shrink {
+            padding: 5px 0;
+            background-color: @themeDark;
+        }
+        .navbar-brand {
+            img {
+                height: 50px;
+            }
+        }
+        .navbar-collapse {
+            .navbar-nav {
+                > .nav-item {
+                    margin-right: 5px;
+                    &:last-child {
+                        margin-right: 0;
+                    }
+                    > .nav-link {
+                        &.active,
+                        &.active:hover,
+                        &.active:focus {
+                            color: @themePrimary;
+                            border-radius: 0;
+                            background-color: white;
+                            border-radius: 5px;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
