@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import boto
 import os
 import pickle
+# from skimage import transform, io
 # from scipy.misc import imresize, imread
 
 access_key = os.environ['AWS_ACCESS_KEY_ID']
@@ -24,9 +25,9 @@ def retrieve_from_S3(path):
     conn = boto.connect_s3(access_key, sec_access_key)
     bucket = conn.get_bucket('lazybirder')
     file_key = bucket.get_key(path)
-    h5 = file_key.get_contents_to_filename(path)
-    # X = np.load(path)
-    return h5
+    file_key.get_contents_to_filename(path)
+    X = np.load(path)
+    return X
 
 def crop_square(img, fit_for_test=False):
     if fit_for_test:
@@ -81,12 +82,12 @@ def square_em_up(img, black=True):
     #cv2.imwrite(outpath, output_final)
 
 def load_dict():
-    with open('../data/top200_dict.pkl', 'rb') as f:
+    with open('../data_NAb/top200_dict.pkl', 'rb') as f:
         b_dict = pickle.load(f)
         return b_dict
 
 def preprocess_image(filepath):
-    img_full_path = '../app/uploads/{}'.format(filepath)
+    img_full_path = '../z_app/uploads/{}'.format(filepath)
     image = cv2.imread(img_full_path)
     image = crop_square(image, True)
     image = image/255
