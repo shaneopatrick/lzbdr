@@ -4,8 +4,6 @@ import matplotlib.pyplot as plt
 import boto
 import os
 import pickle
-# from skimage import transform, io
-from scipy.misc import imresize, imread
 
 access_key = os.environ['AWS_ACCESS_KEY_ID']
 sec_access_key = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -47,52 +45,19 @@ def crop_square(img, fit_for_test=False):
         output_final = cv2.resize(output, target_size)
     return output_final
 
-### Make squares and keep aspect ratio
-def square_em_up(img, black=True):
-    target_size = (224, 224)
-    if img.shape[0] != img.shape[1]:
-        max_dim = max(img.shape)
-        buff = int(abs(img.shape[0] - img.shape[1])/2)
-        if black:
-            if img.shape[0] < img.shape[1]: # W greater than H
-                up_buff = np.zeros((buff, max_dim, 3), dtype=np.int)
-                low_buff = np.zeros((buff, max_dim, 3), dtype=np.int)
-                temp = np.vstack((up_buff, img))
-                output = np.vstack((temp, low_buff))
-            else: # H greater than W
-                l_buff = np.zeros((max_dim, buff, 3), dtype=np.int)
-                r_buff = np.zeros((max_dim, buff, 3), dtype=np.int)
-                temp = np.hstack((l_buff, img))
-                output = np.hstack((temp, r_buff))
-        else:
-            if img.shape[0] < img.shape[1]: # W greater than H
-                up_buff = np.zeros((buff, max_dim, 3), dtype=np.int) + 255
-                low_buff = np.zeros((buff, max_dim, 3), dtype=np.int) + 255
-                temp = np.vstack((up_buff, img))
-                output = np.vstack((temp, low_buff))
-            else: # H greater than W
-                l_buff = np.zeros((max_dim, buff, 3), dtype=np.int) + 255
-                r_buff = np.zeros((max_dim, buff, 3), dtype=np.int) + 255
-                temp = np.hstack((l_buff, img))
-                output = np.hstack((temp, r_buff))
-    else:
-        output = img
-    output_final = imresize(output, target_size)
-    return output_final
-    #cv2.imwrite(outpath, output_final)
-
-def load_dict():
-    with open('../data/top200_dict.pkl', 'rb') as f:
-        b_dict = pickle.load(f)
-        return b_dict
-
 def preprocess_image(filepath):
-    img_full_path = '../app/uploads/{}'.format(filepath)
-    image = cv2.imread(img_full_path, mode='RGB')
+    img_full_path = '../z_app/uploads/{}'.format(filepath)
+    image = cv2.imread(img_full_path)
     image = crop_square(image, True)
     image = image/255
     image = image.reshape((1,) + image.shape)
     return image
+
+
+def load_dict():
+    with open('../data_NAb/top200_dict.pkl', 'rb') as f:
+        b_dict = pickle.load(f)
+        return b_dict
 
 
 def return_top_n(pred_arr, n=3):
