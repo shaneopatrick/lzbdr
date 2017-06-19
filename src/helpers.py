@@ -5,7 +5,7 @@ import boto
 import os
 import pickle
 # from skimage import transform, io
-# from scipy.misc import imresize, imread
+from scipy.misc import imresize, imread
 
 access_key = os.environ['AWS_ACCESS_KEY_ID']
 sec_access_key = os.environ['AWS_SECRET_ACCESS_KEY']
@@ -41,10 +41,10 @@ def crop_square(img, fit_for_test=False):
             output = img[:, buff:-buff]
         else: # H greater than W
             output = img[buff:-buff,:]
-        output_final = cv2.resize(output, target_size)
+        output_final = imresize(output, target_size)
     else:
         output = img
-        output_final = cv2.resize(output, target_size)
+        output_final = imresize(output, target_size)
     return output_final
 
 ### Make squares and keep aspect ratio
@@ -88,7 +88,7 @@ def load_dict():
 
 def preprocess_image(filepath):
     img_full_path = '../app/uploads/{}'.format(filepath)
-    image = cv2.imread(img_full_path)
+    image = imread(img_full_path, mode='RGB')
     image = crop_square(image, True)
     image = image/255
     image = image.reshape((1,) + image.shape)
