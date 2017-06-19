@@ -46,7 +46,7 @@ def crop_square(img, fit_for_test=False):
     return output_final
 
 def preprocess_image(filepath):
-    img_full_path = '../z_app/uploads/{}'.format(filepath)
+    img_full_path = '../app/uploads/{}'.format(filepath)
     image = cv2.imread(img_full_path)
     image = crop_square(image, True)
     image = image/255
@@ -55,7 +55,7 @@ def preprocess_image(filepath):
 
 
 def load_dict():
-    with open('../data_NAb/top200_dict.pkl', 'rb') as f:
+    with open('../data/top200_dict.pkl', 'rb') as f:
         b_dict = pickle.load(f)
         return b_dict
 
