@@ -119,8 +119,7 @@ if __name__ == '__main__':
     db = client.get_default_database()
     web_data = db['web_data']
 
-    b_dict = load_dict()
+    #b_dict = load_dict()
 
-    h5 = retrieve_from_S3('vgg16-top200-single-SGD.h5')
-    model = load_model(h5)
+    model = load_model('../data/vgg16-top200-single-SGD.h5')
     app.run(host='0.0.0.0', port=8105, debug=True)
