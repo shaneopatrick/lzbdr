@@ -138,7 +138,7 @@
                                 </label>
                                 <div id="image-holder" class="img-responsive"></div>
                                 <br>
-                                <input id="submit-button2" type="submit" class="btn btn-secondary" value="Submit">
+                                <input id="submit-button" type="submit" class="btn btn-secondary" value="Submit">
                             </div>
                         </form>
                     </div>
@@ -179,10 +179,9 @@
                         <div class="media-body">
                             <h3 class="media-heading">Build Model</h3>
                             <ul>
-                                <li>blah blah blah</li>
-                                <li>something something something</li>
-                                <li>thousands of images</li>
-                                <li>neural network</li>
+                                <li>Convolutional Neural Network</li>
+                                <li>Trained on thousands of images</li>
+                                <li>Learns to identify features</li>
                             </ul>
                         </div>
                     </div>
@@ -196,10 +195,9 @@
                         <div class="media-body">
                             <h3 class="media-heading">Upload Picture</h3>
                             <ul>
-                                <li>blah blah blah</li>
-                                <li>something something something</li>
-                                <li>take picture</li>
-                                <li>network does the work</li>
+                                <li>Take photo of bird</li>
+                                <li>Crop so bird fills frame</li>
+                                <li>Upload photo to app</li>
                             </ul>
                         </div>
                     </div>
@@ -213,10 +211,9 @@
                         <div class="media-body">
                             <h3 class="media-heading">Predict</h3>
                             <ul>
-                                <li>blah blah blah</li>
-                                <li>something something something</li>
-                                <li>percent for each bird</li>
-                                <li>suggest most likely</li>
+                                <li>Network analyzes your photo</li>
+                                <li>Predict % for each species</li>
+                                <li>Return top 3 most likely birds</li>
                             </ul>
                         </div>
                     </div>
@@ -228,57 +225,47 @@
 
 
     <!-- CNN Section -->
-    <section class="page-section pricing" style="background-image: url('../static/img/agency/backgrounds/bg-cnn.jpg')">
+    <section class="page-section pricing" style="background-image: url('../static/img/agency/backgrounds/bg-cnn.jpg'); padding-bottom: 180px;">
         <div class="container wow fadeIn">
             <div class="text-center">
-                <h2>More on Neural Networks</h2>
+                <h2>Convolutional Neural Networks</h2>
                 <hr class="colored">
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eum, quae, laborum, voluptate delectus odio doloremque error porro obcaecati nemo animi ducimus quaerat nostrum? Ab molestiae eaque et atque architecto reiciendis.</p>
+                <p>Lazybirder operates on top of a convolutional neural network. Thanks to technological advances in recent years we are able to create networks which can "learn" a number of different tasks. Convolutional neural networks (CNNs) are specific to image processing and can do some amazing things. Here's a quick (and very simplified) rundown of what makes up a CNN.</p>
             </div>
             <div class="row">
                 <!-- Pricing Table 1 -->
                 <div class="col-md-4">
                     <div class="pricing-item featured-first">
-                        <h3>Visual 1</h3>
+                        <h3>Neurons</h3>
                         <hr class="colored">
-                        <ul class="list-group mb-3">
-                            <li class="list-group-item">60 Users</li>
-                            <li class="list-group-item">Unlimited Forums</li>
-                            <li class="list-group-item">Unlimited Reports</li>
-                            <li class="list-group-item">3,000 Entries per Month</li>
-                            <li class="list-group-item">200 MB Storage</li>
-                            <li class="list-group-item">Unlimited Support</li>
-                        </ul>
+                        <p>Networks imitate neurons in the brain, passing information forward through the network, learning from error, and correcting how information is passed forward the next time</p>
+                        <img class="img-fluid" src="http://natureofcode.com/book/imgs/chapter10/ch10_02.png" alt="">
+                        <br><br>
+                        <p style="font-size: 10px;">(<a href="http://natureofcode.com/book/chapter-10-neural-networks/">source</a>)</p>
                     </div>
                 </div>
                 <!-- Pricing Table 2 -->
                 <div class="col-md-4">
                     <div class="pricing-item featured">
-                        <h3>Visual 2</h3>
+                        <h3>Process Images</h3>
                         <hr class="colored">
-                        <ul class="list-group mb-3">
-                            <li class="list-group-item">60 Users</li>
-                            <li class="list-group-item">Unlimited Forums</li>
-                            <li class="list-group-item">Unlimited Reports</li>
-                            <li class="list-group-item">3,000 Entries per Month</li>
-                            <li class="list-group-item">200 MB Storage</li>
-                            <li class="list-group-item">Unlimited Support</li>
-                        </ul>
+                        <p>Compute matrix multiplication millions of times during training</p>
+                        <img class="img-fluid" src="https://cdn-images-1.medium.com/max/800/0*1PSMTM8Brk0hsJuF." alt="">
+                        <br><br>
+                        <p style="font-size: 10px;">(<a href="https://github.com/vdumoulin/conv_arithmetic">source</a>)</p>
                     </div>
                 </div>
                 <!-- Pricing Table 3 -->
                 <div class="col-md-4">
                     <div class="pricing-item featured-last">
-                        <h3>Visual 3</h3>
+                        <h3>Architecture</h3>
                         <hr class="colored">
-                        <ul class="list-group mb-3">
-                            <li class="list-group-item">60 Users</li>
-                            <li class="list-group-item">Unlimited Forums</li>
-                            <li class="list-group-item">Unlimited Reports</li>
-                            <li class="list-group-item">3,000 Entries per Month</li>
-                            <li class="list-group-item">200 MB Storage</li>
-                            <li class="list-group-item">Unlimited Support</li>
-                        </ul>
+                        <p>Networks vary in architecture however most consist of convolutional layers, activation functions, pooling layers, fully connected layers, and an output layer to make predictions</p>
+                        <br>
+                        <img class="img-fluid" src="http://www.mdpi.com/urbansci/urbansci-01-00016/article_deploy/html/images/urbansci-01-00016-g002.png" alt="">
+                        <br><br>
+                        <br><br>
+                        <p style="font-size: 10px;">(<a href="http://www.mdpi.com/2413-8851/1/2/16">source</a>)</p>
                     </div>
                 </div>
             </div>
@@ -301,9 +288,9 @@
                         </div>
                         <!-- Testimonial Item 2 -->
                         <div class="item mb-4">
-                            <p class="lead">Second reference</p>
+                            <p class="lead">All About Birds</p>
                             <hr class="colored">
-                            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quidem amet rem minus dolorum, facere in soluta explicabo, unde eveniet illo vel, nemo nostrum atque nesciunt facilis quaerat quasi reprehenderit dicta.</p>
+                            <p>Information about bird species and conservation status sourced from <a href="https://www.allaboutbirds.org/">www.allaboutbirds.org</a></p>
                         </div>
                     </div>
                 </div>
@@ -350,7 +337,7 @@
                             <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
                         </li>
                         <li class="list-inline-item">
-                            <a href="#"><i class="fa fa-github fa-fw fa-2x"></i></a>
+                            <a href="https://github.com/shaneopatrick/lzbdr" target="_blank"><i class="fa fa-github fa-fw fa-2x"></i></a>
                         </li>
                     </ul>
                 </div>
@@ -362,13 +349,13 @@
 
     <!-- scripts for hiding buttons -->
 
-    <script>
-        // $('#submit-button').hide();
-        $('#fileUpload').click(function(){
+    <!-- <script>
+        $('#submit-button').hide();
+        $('#fileUpload').onClick(function(){
             alert('hello!')
             $('#submit-button').show();
         });
-    </script>
+    </script> -->
 
     <!-- scripts for image preview -->
 
