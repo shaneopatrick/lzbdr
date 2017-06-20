@@ -109,7 +109,7 @@ At this point it was time to add more data. I decided to stay with my original t
 
 * Test accuracy:  0.81
 * Top 5 accuracy: 0.96
-* Top 3 accuracy: 0.83
+* Top 3 accuracy: 0.93
 
 
 

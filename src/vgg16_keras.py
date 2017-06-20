@@ -95,8 +95,8 @@ def _image_generator(X_train, Y_train):
 def fit_model_vgg16(X_train, X_test, Y_train, Y_test, batch_size=26, epochs=45):
     generator = _image_generator(X_train, Y_train)
 
-    filepath="weights/weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
-    checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=0, save_best_only=True, mode='max')
+    #filepath="weights/weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
+    #checkpoint = ModelCheckpoint(filepath, monitor='val_acc', verbose=0, save_best_only=True, mode='max')
 
     # Change learning rate when learning plateaus
     reduce_lr = ReduceLROnPlateau(monitor='val_loss', factor=0.1,
