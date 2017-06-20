@@ -62,7 +62,7 @@ p {
 
 p.lead {
   font-size: 24px;
-  font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Bitter', 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 900;
   text-transform: uppercase; }
 
@@ -72,7 +72,7 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+  font-family: 'Bitter', 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   font-weight: 900;
   text-transform: uppercase; }
 
@@ -342,7 +342,7 @@ header.video {
       line-height: 40px;
       display: block;
       margin-bottom: 5px;
-      font-family: 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+      font-family: 'Bitter', 'Raleway', 'Helvetica Neue', Helvetica, Arial, sans-serif;
       font-weight: 900;
       text-transform: uppercase; }
     .portfolio-carousel .item .project-details .project-description {
