@@ -15,7 +15,6 @@ from keras import optimizers
 from keras.utils import to_categorical
 from keras.applications.vgg16 import VGG16
 from keras.preprocessing import image
-from keras.applications.vgg16 import preprocess_input
 from keras.layers import Input, Flatten, Dense, Dropout
 from keras.callbacks import ModelCheckpoint, ReduceLROnPlateau, EarlyStopping
 
@@ -24,7 +23,7 @@ from helpers import *
 sys.setrecursionlimit(1000000)
 
 
-os.environ["THEANO_FLAGS"] = 'allow_gc=False, optimizer_including="local_ultra_fast_sigmoid", nvcc.fastmath=True, use_fast_math=True, optimizer=fast_compile'#, borrow=True'
+os.environ["THEANO_FLAGS"] = 'allow_gc=False, optimizer_including="local_ultra_fast_sigmoid", nvcc.fastmath=True, use_fast_math=True, optimizer=fast_compile, borrow=True'
 
 def split_data(X, y, num_classes):
 
@@ -64,7 +63,7 @@ def build_vgg16(num_classes=200):
     #Add the fully-connected layers
     x = Flatten(name='flatten')(output_vgg16_conv)
     x = Dense(512, activation='relu', name='fc1')(x)
-    #x = Dense(1024, activation='relu', name='fc2')(x)
+    x = Dense(512, activation='relu', name='fc2')(x)
     x = Dense(num_classes, activation='softmax', name='predictions')(x)
 
     #Create your own model
@@ -82,17 +81,16 @@ def build_vgg16(num_classes=200):
     return my_model#, my_model.summary()
 
 def _image_generator(X_train, Y_train):
-    seed = 1337
     train_datagen = image.ImageDataGenerator(
             rotation_range=30,
             width_shift_range=0.1,
             height_shift_range=0.1,
             horizontal_flip=True)
-    train_datagen.fit(X_train, seed=seed)
+    train_datagen.fit(X_train, seed=1919)
     return train_datagen
 
 #Then training with your data !
-def fit_model_vgg16(X_train, X_test, Y_train, Y_test, batch_size=26, epochs=45):
+def fit_model_vgg16(X_train, X_test, Y_train, Y_test, batch_size, epochs):
     generator = _image_generator(X_train, Y_train)
 
     #filepath="weights/weights-improvement-{epoch:02d}-{val_acc:.2f}.hdf5"
@@ -128,43 +126,44 @@ def predictions_test_data(model, X_test, Y_test):
 
 
 if __name__ == '__main__':
-
+    # Load npz files
     x_ = np.load('X_200.npz')
     y_ = np.load('y_200.npz')
 
-
-    # X = np.load('X_test10_nocanv.npy')
-    # y = np.load('y_test10_nocanv.npy')
-    # x_te = np.load('data/X_test200.npz')
-    # y_te = np.load('data/y_test200.npz')
-
+    # Extract numpy arrays from npz
     X, y = load_npz(x_, y_)
 
+    # Split data into train, validation, and test sets
     X_train, X_test, Y_train, Y_test, X_val, Y_val, y_test, y_val = split_data(X, y, 200)
-    #
+
+    # Instantiate model
     my_model = build_vgg16(200)
 
-    fit_model, score, probs, history = fit_model_vgg16(X_train, X_val, Y_train, Y_val, batch_size=32, epochs=50)
+    # Fit model and evaluate
+    fit_model, score, probs, history = fit_model_vgg16(X_train, X_val, Y_train, Y_val, batch_size=32, epochs=20)
 
+    # Print results and save performance chart
     print('Val score:', score[0])
     print('Val accuracy:', score[1])
     score_top5(y_val, probs)
     score_top3(y_val, probs)
     model_summary_plots(history, 'top200_vgg16-final')
 
+    # Predict on test set
     t_score, t_probs = predictions_test_data(fit_model, X_test, Y_test)
 
+    # Print results from test set
     print('Test score:', t_score[0])
     print('Test accuracy:', t_score[1])
     score_top5(y_test, t_probs)
     score_top3(y_test, t_probs)
 
-
+    # Save model architecture to json
     model_json = fit_model.to_json()
     with open("vgg16-top200-final.json", "w") as json_file:
         json_file.write(model_json)
 
-    # serialize weights to HDF5
+    # Serialize weights to HDF5
     fit_model.save('vgg16-top200-final.h5')
 
     # Save model history to pickle
@@ -172,7 +171,9 @@ if __name__ == '__main__':
         for obj in [history]:
             pickle.dump(obj, f, protocol=pickle.HIGHEST_PROTOCOL)
 
+    # Save y_test to npz
     np.savez('y_test_vgg16top200-final.npz', y_test)
 
+    # Save predictions matrix to pickle
     with open('test_probs_vgg16top200-final.pkl', 'wb') as ff:
         pickle.dump(t_probs, ff, protocol=pickle.HIGHEST_PROTOCOL)

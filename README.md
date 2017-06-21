@@ -1,4 +1,4 @@
-# LazyBirder
+<img src="img/big-logo.svg" height="100"/>
 ---
 ## Bird Classification with CNNs
 <img src="http://i.imgur.com/BdO4gev.jpg" height="400"/>
