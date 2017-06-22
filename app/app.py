@@ -122,4 +122,4 @@ if __name__ == '__main__':
     #b_dict = load_dict()
 
     model = load_model('../data/vgg16-top200-single-SGD.h5')
-    app.run(host='0.0.0.0', port=8105, debug=True)
+    app.run(host='0.0.0.0', port=80, threaded=True)
