@@ -9,7 +9,7 @@
 
 ### Project Description
 
-As a capstone project for the DSI I chose to create a bird classifier, given my fascination with image recongnition and an amateur interest in birds. Like most people I interact with, my free time is limited. And as a serial hobbiest I am wary of becoming a full fledged "birder". With not enough time to really invest in becoming a bird expert, I aim to create a solution which will let me quickly identify a bird from a picture.
+As a capstone project for the Galvnize Data Science Immersive I chose to create a bird classifier, given my fascination with image recongnition and an amateur interest in birds. Like most people I interact with, my free time is limited. And as a serial hobbiest I am wary of becoming a full fledged "birder". With not enough time to really invest in becoming a bird expert, I aimed to create a solution which will let me quickly identify a bird from a picture.
 
 While Googling I found the [CUB200 dataset](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html), a robust resource with approx 40-60 images for 200 classes of birds. There are a number of papers published using this dataset and I decided this would be a good data set to start with.
 
@@ -33,7 +33,7 @@ Cropped image              |  Squared & resized image
 :-------------------------:|:-------------------------:
 <img src="img/wp_cropped.jpg" height="179"/>  | <img src="img/wp_sqr_resize.jpg" height="224"/>
 
-Two data augmentation techniques I tried was mirroring the images (axis=1) which double the number of datapoints the model trains on.
+Two data augmentation techniques I tried was mirroring the images (axis=1) which doubles the number of datapoints the model trains on.
 
 __Mirrored image__
 
@@ -93,41 +93,102 @@ In order to see where I stood overall with the entire dataset all 200 classes, t
 * Top 3 accuracy: 0.33
 
 
-At this point I pivoted to using a pretrained network, the VGG16. This drastically improved my results. Pretrained networks provide a substantial lift because the network weights have already been optimized using __ImageNet__.
-* The goal of the ImageNet classification challenge is to train a model that can correctly classify an input image into 1,000 separate object categories. Models are trained on approximately 1.2 million training images with another 50,000 images for validation and 100,000 images for testing.
 
-What this means is that the pretrained VGG16 network can already detect differences in colors and contours instead of starting from scratch and trying to optimize the network weights.
+### VGG16
+
+At this point I pivoted to using a pretrained network, the VGG16. This drastically improved my results. Pretrained networks provide a substantial lift because the network weights have already been optimized using __ImageNet__.
+
+The goal of the ImageNet classification challenge is to train a model that can correctly classify an input image into 1,000 separate object categories. Models are trained on approximately 1.2 million training images with another 50,000 images for validation and 100,000 images for testing.
+
+What this means is that the pretrained VGG16 network can already detect differences in colors, shapes, and edges instead of starting from ground 0 and trying to "learn" the optimal weights.
+
+The VGG16 trained on the CUB200 dataset yeiled the following results.
 
 >_trained on 8841 images, tested on 2947 images_
 
 * Test accuracy:  0.68
-* Top 5 accuracy: 0.90
-* Top 3 accuracy: 0.86
+* Top 5 accuracy: 0.78
+* Top 3 accuracy: 0.72
 
-At this point it was time to add more data. I decided to stay with my original task of classifying 200 classes although the class labels (bird species) themselves were changed. Utilizing the NABirds dataset my training data went from 8841 images to 23569 images. This yeiled the best results to date.
-
->_trained on 23569 images, validated on 4000 images, tested on 3856 images_
-
-* Test accuracy:  0.81
-* Top 5 accuracy: 0.96
-* Top 3 accuracy: 0.93
+At this point it was time to add more data. The NABirds dataset has 60-140 images for 404 classes of birds. However due to computational limitation on AWS ec2 instances I was never able to train a model on the full 404 classes. I decided to stay with my original task of classifying 200 classes although the class labels (bird species) themselves were changed. I selected the 200 classes based on the number of images available for the class, using the classes with the most data. Utilizing the NABirds dataset my training data went from 8841 images to 23569 images. This yeiled the best results to date.
 
 
+### Architecture
+
+The [VGG16](https://arxiv.org/pdf/1409.1556.pdf) was introduced by a team at Oxford in 2014, known for its simplicity. The network consists of 13 convolutional layers with 3x3 kernels at each convolution. Size reduction is handled by max pooling layers. Two fully-connected layers are at the end of the network and are followed by a softmax classifier.
 
 
-#### Still need to try...
-* Incorporate meta data, see how much improvement can be made
-* Advanced architectures
-* More image data!!
+<img src="https://www.cs.toronto.edu/~frossard/post/vgg16/vgg16.png" width="600"/>
 
+[(source)](https://www.cs.toronto.edu/~frossard/post/vgg16/)
 
-
-
-
-### Best solution
-...
+The modifications I made to the architecture were:
+* Custom input, 224x224x3 preprocessed images
+* 2 fully-connected layers with 512 neurons
+* Softmax classifier with 200 neurons for my number of classes.
+* ReLu activation functions
+* Stochastic Gradient Descent optimizer with a reducing learning rate
 
 
 ### Results
 
-....
+My final network was trained on 23569 images, validated on 4000 images, and tested on 3856 images. The amount of time needed for 20 epochs of training was approximately 60 hours. The following chart shows the training accuracy and loss for both the training and _validation_ data sets.
+
+<img src="img/top200_vgg16-final_model_accuracy_loss.png" width="600"/>
+
+After the model finished traing it was tested on the hold-out set of 3856 images.
+
+>#### Test accuracy:  0.83
+#### Top 5 accuracy: 0.97
+#### Top 3 accuracy: 0.94
+
+Looking at the Top 3 accuracy, out of 3856 test images the network failed to return the correct species in the top 3 predictions for only 231 images. Each time the network is given an image it will predict 200 probabilities, one for each class. You can sort those probabilities and return the top _n_ and compare it to the true label. Here's an visual of the Top 3:
+
+<img src="img/top3_vis.png" width="400"/>
+
+
+I was very pleased with this accuracy rate and decided to incorporate the Top 3 predictions in my web application.
+
+
+### Web app
+
+#### [www.lazybirder.club](http://www.lazybirder.club/)
+<br>
+Lazybirder is built with Flask, a microframework for running applications with in Python. The site uses a Bootstrap 4 template from www.wrapbootstrap.com.
+
+My CNN was built using Keras and Theano and trained on AWS using a NVIDIA GRID GPU.
+
+The image preprocessing is performed in real-time using OpenCV and Numpy. I am also hosting the application on AWS with a MongoDB.
+
+
+### Next steps
+
+* Incorporate more bird species.
+* Employ "bird detection" before passing images into the network.
+* Automate cropping of images with a sophisticated bounding box technique.
+* Add more features to web app:
+    * Allow users to confirm the system's predictions of species after submitting a photo. The user provided images could then used to train the model further to improve accuracy.
+    * Incorporate geo-tagging integrated with [eBird](http://ebird.org/content/ebird/about/), allowing users to see on a map where the species has also been sighted nearby.
+    * Add a social feed component to see other photographs of birds uploaded by users.
+    * Mobile app.
+
+
+### References
+
+Wah C., Branson S., Welinder P., Perona P., Belongie S. “The Caltech-UCSD Birds-200-2011 Dataset.” Computation & Neural Systems Technical Report, CNS-TR-2011-001.
+[CUB200 Dataset](http://www.vision.caltech.edu/visipedia/CUB-200-2011.html)
+
+The Birds of North America (P. Rodewald, Ed.). Ithaca: Cornell Laboratory of Ornithology; Retrieved from The Birds of North America: https://birdsna.org; AUG 2015.
+[NABirds dataset](https://birdsna.org)
+
+Zhao, B., Wu, X., Feng, J., Peng, Q. (2017). Diversified Visual Attention Networks for Fine-Grained Object Classification. arXiv.org.
+[arXiv:1606.08572](https://arxiv.org/abs/1606.08572v2)
+
+Simonyan, K., & Zisserman, A. (2015). Very deep convolutional networks for large­scale image recognition. arXiv.org.
+[arXiv:1409.1556](https://arxiv.org/abs/1409.1556)
+
+CS231n Convolutional Neural Networks for Visual Recognition. Stanford online course.
+[http://cs231n.github.io/](http://cs231n.github.io/)
+
+
+---
