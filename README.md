@@ -139,8 +139,8 @@ My final network was trained on 23569 images, validated on 4000 images, and test
 After the model finished traing it was tested on the hold-out set of 3856 images.
 
 >#### Test accuracy:  0.83
-#### Top 5 accuracy: 0.97
-#### Top 3 accuracy: 0.94
+>#### Top 5 accuracy: 0.97
+>#### Top 3 accuracy: 0.94
 
 Looking at the Top 3 accuracy, out of 3856 test images the network failed to return the correct species in the top 3 predictions for only 231 images. Each time the network is given an image it will predict 200 probabilities, one for each class. You can sort those probabilities and return the top _n_ and compare it to the true label. Here's an visual of the Top 3:
 
