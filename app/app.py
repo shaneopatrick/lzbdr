@@ -71,19 +71,20 @@ def results():
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
 
-            cropped, score, class_ = crop_image('../{}'.format(file_path), detection_graph)
+            # cropped, score, class_ = crop_image('../{}'.format(file_path), detection_graph)
+            #
+            # if class_ != 16.:
+            #     return render_template('tryagain.html')
+            # if score < 0.5:
+            #     return render_template('tryagain.html')
+            # if cropped is None:
+            #     return render_template('tryagain.html')
 
-            if class_ != 16.:
-                return render_template('tryagain.html')
-            if score < 0.5:
-                return render_template('tryagain.html')
-            if cropped is None:
-                return render_template('tryagain.html')
+            # cv2.imwrite('static/img/cropped/{}'.format(filename), cropped)
+            # upload_cropped = 'static/img/cropped/{}'.format(filename)
 
-            cv2.imwrite('static/img/cropped/{}'.format(filename), cropped)
-            upload_cropped = 'static/img/cropped/{}'.format(filename)
-
-            processed = preprocess_image(cropped)
+            # processed = preprocess_image(cropped)
+            processed = preprocess_image('../{}'.format(file_path))
 
             pred = model.predict(processed).flatten()
             top_keys, top_perc = return_top_n(pred)
@@ -123,7 +124,7 @@ def results():
 
             likelihoods = {'conf1': conf_fxn(top_perc[0]), 'perc1': round(top_perc[0]*100, 2), 'conf2': conf_fxn(top_perc[1]), 'perc2': round(top_perc[1]*100, 2), 'conf3': conf_fxn(top_perc[2]), 'perc3': round(top_perc[2]*100, 2),}
 
-            return render_template('results.html', bird1 = cursor1, bird2 = cursor2, bird3 = cursor3, pics1 = images1, pics2 = images2, pics3 = images3, how_conf = likelihoods, preview_img = upload_cropped)
+            return render_template('results.html', bird1 = cursor1, bird2 = cursor2, bird3 = cursor3, pics1 = images1, pics2 = images2, pics3 = images3, how_conf = likelihoods)#, preview_img = upload_cropped)
 
 # try again page
 @app.route('/tryagain')

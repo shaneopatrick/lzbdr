@@ -73,10 +73,11 @@ def crop_square(img, fit_for_test=False):
     return output_final
 
 
-def preprocess_image(img):
-    # img_full_path = '../app/uploads/{}'.format(filepath)
-    # image = cv2.imread(img_full_path)
-    image = resize_image_to_square(img)
+def preprocess_image(filepath):
+    # comment out next 2 lines and change var to img
+    img_full_path = '../app/uploads/{}'.format(filepath)
+    image = cv2.imread(img_full_path)
+    image = resize_image_to_square(image)
     image = image/255
     image = image.reshape((1,) + image.shape)
     # cv2.imshow('processed', image)
@@ -138,6 +139,16 @@ def load_dict():
         return b_dict
 
 ### Measure Accuracy
+
+def return_top_n(pred_arr, n=3):
+    '''
+    IN: flattened prediction array
+    OUT: top n indices (dict keys) and percentages
+    '''
+    sorts = np.argsort(-pred_arr)
+    topn_keys = sorts[:n]
+    percents = pred_arr[topn_keys]
+    return topn_keys, percents
 
 def score_top5(y_test, probs):
     sorts = np.argsort(probs, axis=1)
