@@ -71,20 +71,20 @@ def results():
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
 
-            # cropped, score, class_ = crop_image('../{}'.format(file_path), detection_graph)
-            #
-            # if class_ != 16.:
-            #     return render_template('tryagain.html')
-            # if score < 0.5:
-            #     return render_template('tryagain.html')
-            # if cropped is None:
-            #     return render_template('tryagain.html')
+            cropped, score, class_ = crop_image('../{}'.format(file_path), detection_graph)
 
-            # cv2.imwrite('static/img/cropped/{}'.format(filename), cropped)
-            # upload_cropped = 'static/img/cropped/{}'.format(filename)
+            if class_ != 16.:
+                return render_template('tryagain.html')
+            if score < 0.5:
+                return render_template('tryagain.html')
+            if cropped is None:
+                return render_template('tryagain.html')
 
-            # processed = preprocess_image(cropped)
-            processed = preprocess_image('../{}'.format(file_path))
+            cv2.imwrite('static/img/cropped/{}'.format(filename), cropped)
+            upload_cropped = 'static/img/cropped/{}'.format(filename)
+
+            processed = preprocess_image(cropped)
+            # processed = preprocess_image('../{}'.format(file_path))
 
             pred = model.predict(processed).flatten()
             top_keys, top_perc = return_top_n(pred)
@@ -124,7 +124,7 @@ def results():
 
             likelihoods = {'conf1': conf_fxn(top_perc[0]), 'perc1': round(top_perc[0]*100, 2), 'conf2': conf_fxn(top_perc[1]), 'perc2': round(top_perc[1]*100, 2), 'conf3': conf_fxn(top_perc[2]), 'perc3': round(top_perc[2]*100, 2),}
 
-            return render_template('results.html', bird1 = cursor1, bird2 = cursor2, bird3 = cursor3, pics1 = images1, pics2 = images2, pics3 = images3, how_conf = likelihoods)#, preview_img = upload_cropped)
+            return render_template('results.html', bird1 = cursor1, bird2 = cursor2, bird3 = cursor3, pics1 = images1, pics2 = images2, pics3 = images3, how_conf = likelihoods, preview_img = upload_cropped)
 
 # try again page
 @app.route('/tryagain')
@@ -148,15 +148,15 @@ if __name__ == '__main__':
     # Path to frozen detection graph. This is the actual model that is used for the object detection.
     PATH_TO_CKPT = '/usr/local/lib/python3.5/dist-packages/tensorflow/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017/frozen_inference_graph.pb'
 
-    # print('\n##### Loading detection_graph into memory #####')
+    print('\n##### Loading detection_graph into memory #####')
     # # Load a (frozen) Tensorflow model into memory
-    # detection_graph = tf.Graph()
-    # with detection_graph.as_default():
-    #     od_graph_def = tf.GraphDef()
-    #     with tf.gfile.GFile(PATH_TO_CKPT, 'rb') as fid:
-    #         serialized_graph = fid.read()
-    #         od_graph_def.ParseFromString(serialized_graph)
-    #         tf.import_graph_def(od_graph_def, name='')
+    detection_graph = tf.Graph()
+    with detection_graph.as_default():
+        od_graph_def = tf.GraphDef()
+        with tf.gfile.GFile(PATH_TO_CKPT, 'rb') as fid:
+            serialized_graph = fid.read()
+            od_graph_def.ParseFromString(serialized_graph)
+            tf.import_graph_def(od_graph_def, name='')
 
     print('\n##### Loading frozen model into memory #####')
     # Load a (frozen) Tensorflow model into memory
