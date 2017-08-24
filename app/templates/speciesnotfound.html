@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Lazybirder</title>
+
+    <!-- <link href="{{url_for('static', filename='../static/css/bootstrap.min.css')}}" rel="stylesheet" rel="stylesheet"> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="{{url_for('static', filename='../static/vendor/bootstrap/css/bootstrap.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Custom fonts for this theme -->
+    <!-- <link href='https://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'> -->
+
+    <link href='https://fonts.googleapis.com/css?family=Bitter:400,100,100italic,300,300italic,400italic,500,500italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+
+    <link href='https://fonts.googleapis.com/css?family=Raleway:400,100,200,300,600,500,700,800,900' rel='stylesheet' type='text/css'>
+
+    <!-- Plugin CSS -->
+    <link href="{{url_for('static', filename='../static/vendor/font-awesome/css/font-awesome.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.carousel.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.theme.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/owl-carousel/owl.transitions.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/magnific-popup/magnific-popup.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/vendor/animate.css/animate.min.css')}}" rel="stylesheet" type="text/css">
+    <link href="{{url_for('static', filename='../static/device-mockups/device-mockups.min.css')}}" rel="stylesheet" type="text/css">
+
+    <!-- Custom styles for this theme -->
+    <!-- Uncomment the color scheme you want to use! Red is chosen by default! -->
+    <link href="{{url_for('static', filename='../static/css/vitality-red.css')}}" rel="stylesheet" type="text/css">
+    <!-- <link href="css/vitality-aqua.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-blue.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-green.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-orange.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-pink.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-purple.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-tan.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-turquoise.css" rel="stylesheet" type="text/css"> -->
+    <!-- <link href="css/vitality-yellow.css" rel="stylesheet" type="text/css"> -->
+
+    <link rel="shortcut icon" href="{{url_for('static', filename='../static/img/agency/favicon.ico')}}" type="image/x-icon">
+
+    <!-- Temporary navbar container fix -->
+    <style>
+    .navbar-toggler {
+        z-index: 1;
+    }
+
+    @media (max-width: 576px) {
+        nav > .container {
+            width: 100%;
+        }
+    }
+    </style>
+
+</head>
+
+<body id="page-top">
+
+    <!-- Navigation -->
+    <nav class="navbar fixed-top navbar-toggleable-md navbar-inverse navbar-expanded" id="mainNav">
+        <div class="container">
+            <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+                Menu <i class="fa fa-bars"></i>
+            </button>
+            <a class="navbar-brand page-scroll" href="/">
+                <img class="img-fluid" src="../static/img/agency/head-logo.svg" alt="">
+            </a>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#identify">Home</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#how">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#references">References</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#donate">Give</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#pricing">Pricing</a>
+                    </li> -->
+                    <!-- <li class="nav-item">
+                        <a class="nav-link page-scroll" href="#contact">Contact</a>
+                    </li> -->
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Species not found message -->
+    <div class="portfolio-carousel wow fadeIn owl-carousel owl-theme" id='notfound'>
+        <div class="item" style="background-image: url('../static/img/agency/results/carousel/tree-gs-min.jpg')">
+            <div class="container-fluid text-center">
+                <div class="row" style="padding-bottom: 100px;">
+                    <div class="col-lg-8 offset-lg-2">
+                        <br>
+                        <h2>Bird not recognized</h2>
+                        <br>
+                        <br>
+                        <p style="font-size: 24px;">Sorry to say we could not identify your bird. Currently Lazybirder can only identify 200 different bird species.<br><br>Click below to view the complete list.</p>
+                        <br>
+                        <br>
+                        <a href="#listofbirds" data-toggle="modal" class="btn btn-primary">Supported Species</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <!-- Return Home Section -->
+    <section class="page-section signup-form bg-inverse text-white" id="return">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-lg-8 offset-lg-2">
+                    <div class="wow fadeIn px-4 pb-4 pb-lg-0 h-100" data-wow-delay=".2s">
+                        <a href="/" class="btn btn-primary">Return Home</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Footer -->
+    <footer class="footer" style="background-image: url('../static/img/agency/backgrounds/bg-footer.jpg')">
+        <div class="container text-center">
+            <div class="row">
+                <div class="col-md-12 footer-contact-details">
+                    <h4><i class="fa fa-map-marker"></i> HQ</h4>
+                    <p>Denver, CO</p>
+                </div>
+            </div>
+            <div class="row footer-social">
+                <div class="col-lg-12">
+                    <ul class="list-inline">
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fa fa-instagram fa-fw fa-2x"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="#"><i class="fa fa-twitter fa-fw fa-2x"></i></a>
+                        </li>
+                        <li class="list-inline-item">
+                            <a href="https://github.com/shaneopatrick/lzbdr" target="_blank"><i class="fa fa-github fa-fw fa-2x"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <p class="copyright">Built with Bootstrap 4 using a <a href="https://wrapbootstrap.com/theme/vitality-one-page-bootstrap-4-theme-WB02K3KK3">theme</a> provided by {wrap}bootstrap<br>&copy; 2017 Lazybirder</p>
+        </div>
+    </footer>
+
+    <!-- Example Modal 1: Corresponds with Portfolio Carousel Item 1 -->
+    <div class="portfolio-modal modal fade" id="listofbirds" tabindex="-1" role="dialog" aria-hidden="true" style="background-image: url('../static/img/agency/results/carousel/reeds-gs-min.jpg')">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="close-modal" data-dismiss="modal">
+                    <div class="lr">
+                        <div class="rl">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-lg-8 offset-lg-2">
+                                <h2>Supported Species</h2>
+                                <hr class="colored">
+                                <div class="col-lg-8 offset-lg-2 text-left">
+                                    <p style="font-size: 24px;"><strong>
+                                        Yellow-rumped Warbler<br>
+                                        Dark-eyed Junco<br>
+                                        European Starling<br>
+                                        Red-tailed Hawk<br>
+                                        American Goldfinch<br>
+                                        Northern Cardinal<br>
+                                        White-crowned Sparrow<br>
+                                        Red-winged Blackbird<br>
+                                        Mallard<br>
+                                        Northern Flicker<br>
+                                        Cooper's Hawk<br>
+                                        House Sparrow<br>
+                                        Common Yellowthroat<br>
+                                        American Robin<br>
+                                        House Finch<br>
+                                        American Kestrel<br>
+                                        Sharp-shinned Hawk<br>
+                                        Bald Eagle<br>
+                                        Brown-headed Cowbird<br>
+                                        American Redstart<br>
+                                        Anna's Hummingbird<br>
+                                        Rose-breasted Grosbeak<br>
+                                        Ruby-throated Hummingbird<br>
+                                        Black-chinned Hummingbird<br>
+                                        Black-crowned Night-Heron<br>
+                                        Chipping Sparrow<br>
+                                        Herring Gull<br>
+                                        Wood Duck<br>
+                                        Fox Sparrow<br>
+                                        Northern Harrier<br>
+                                        Common Loon<br>
+                                        Ruddy Duck<br>
+                                        Double-crested Cormorant<br>
+                                        Indigo Bunting<br>
+                                        Baltimore Oriole<br>
+                                        Little Blue Heron<br>
+                                        Spotted Sandpiper<br>
+                                        Painted Bunting<br>
+                                        Laughing Gull<br>
+                                        Magnolia Warbler<br>
+                                        Blackpoll Warbler<br>
+                                        White-throated Sparrow<br>
+                                        Golden-crowned Sparrow<br>
+                                        Ring-billed Gull<br>
+                                        Evening Grosbeak<br>
+                                        Northern Shoveler<br>
+                                        Black-headed Grosbeak<br>
+                                        Horned Grebe<br>
+                                        Chestnut-sided Warbler<br>
+                                        Dunlin<br>
+                                        Purple Finch<br>
+                                        Lesser Goldfinch<br>
+                                        Orchard Oriole<br>
+                                        Blue Grosbeak<br>
+                                        Black-throated Blue Warbler<br>
+                                        Red-headed Woodpecker<br>
+                                        Summer Tanager<br>
+                                        Vermilion Flycatcher<br>
+                                        Swainson's Hawk<br>
+                                        Brewer's Blackbird<br>
+                                        Calliope Hummingbird<br>
+                                        Bobolink<br>
+                                        White Ibis<br>
+                                        Yellow-crowned Night-Heron<br>
+                                        Allen's Hummingbird<br>
+                                        Hooded Merganser<br>
+                                        Bufflehead<br>
+                                        California Quail<br>
+                                        Black-bellied Plover<br>
+                                        Common Goldeneye<br>
+                                        Yellow-headed Blackbird<br>
+                                        Rufous Hummingbird<br>
+                                        Scarlet Tanager<br>
+                                        Hooded Oriole<br>
+                                        Bullock's Oriole<br>
+                                        Western Tanager<br>
+                                        Reddish Egret<br>
+                                        Gadwall<br>
+                                        Red-breasted Merganser<br>
+                                        Red-shouldered Hawk<br>
+                                        Common Merganser<br>
+                                        Wilson's Phalarope<br>
+                                        Great Black-backed Gull<br>
+                                        Lesser Scaup<br>
+                                        Lazuli Bunting<br>
+                                        Northern Gannet<br>
+                                        Green-winged Teal<br>
+                                        Common Eider<br>
+                                        Cinnamon Teal<br>
+                                        Broad-tailed Hummingbird<br>
+                                        Purple Martin<br>
+                                        Golden Eagle<br>
+                                        Eared Grebe<br>
+                                        American Wigeon<br>
+                                        Long-tailed Duck<br>
+                                        Rough-legged Hawk<br>
+                                        Cassin's Finch<br>
+                                        Northern Pintail<br>
+                                        Heermann's Gull<br>
+                                        Pine Grosbeak<br>
+                                        Red Crossbill<br>
+                                        Common Gallinule<br>
+                                        Ring-necked Duck<br>
+                                        Broad-billed Hummingbird<br>
+                                        Harris's Sparrow<br>
+                                        Canvasback<br>
+                                        California Gull<br>
+                                        Peregrine Falcon<br>
+                                        Snow Bunting<br>
+                                        Glaucous-winged Gull<br>
+                                        Sanderling<br>
+                                        Ring-necked Pheasant<br>
+                                        Western Gull<br>
+                                        Savannah Sparrow<br>
+                                        Tufted Titmouse<br>
+                                        Northern Parula<br>
+                                        Gray Catbird<br>
+                                        Hermit Thrush<br>
+                                        Eastern Bluebird<br>
+                                        Barred Owl<br>
+                                        Lesser Yellowlegs<br>
+                                        Red-breasted Nuthatch<br>
+                                        Green Heron<br>
+                                        Anhinga<br>
+                                        Song Sparrow<br>
+                                        Wild Turkey<br>
+                                        Least Sandpiper<br>
+                                        Western Scrub-Jay<br>
+                                        Black-and-white Warbler<br>
+                                        Marsh Wren<br>
+                                        Great-tailed Grackle<br>
+                                        Black-throated Green Warbler<br>
+                                        Carolina Wren<br>
+                                        Red-bellied Woodpecker<br>
+                                        Short-billed Dowitcher<br>
+                                        Forster's Tern<br>
+                                        Common Tern<br>
+                                        Spotted Towhee<br>
+                                        Downy Woodpecker<br>
+                                        Yellow Warbler<br>
+                                        Eastern Kingbird<br>
+                                        White-breasted Nuthatch<br>
+                                        Willet<br>
+                                        Western Meadowlark<br>
+                                        Townsend's Warbler<br>
+                                        Bushtit<br>
+                                        Ruby-crowned Kinglet<br>
+                                        Blue-gray Gnatcatcher<br>
+                                        Prairie Warbler<br>
+                                        Blue Jay<br>
+                                        Eastern Phoebe<br>
+                                        Loggerhead Shrike<br>
+                                        Northern Mockingbird<br>
+                                        Killdeer<br>
+                                        American Coot<br>
+                                        Black Phoebe<br>
+                                        Mourning Dove<br>
+                                        Red-eyed Vireo<br>
+                                        Steller's Jay<br>
+                                        Tricolored Heron<br>
+                                        Northern Shrike<br>
+                                        Wilson's Warbler<br>
+                                        Pileated Woodpecker<br>
+                                        Harlequin Duck<br>
+                                        Yellow-bellied Sapsucker<br>
+                                        Pacific-slope Flycatcher<br>
+                                        Nashville Warbler<br>
+                                        Bonaparte's Gull<br>
+                                        Merlin<br>
+                                        Carolina Chickadee<br>
+                                        Say's Phoebe<br>
+                                        American Pipit<br>
+                                        Bewick's Wren<br>
+                                        Common Grackle<br>
+                                        Hairy Woodpecker<br>
+                                        Canada Warbler<br>
+                                        Pigeon Guillemot<br>
+                                        Great Cormorant<br>
+                                        Red-throated Loon<br>
+                                        White-winged Dove<br>
+                                        American Crow<br>
+                                        Mute Swan<br>
+                                        Eurasian Collared-Dove<br>
+                                        Brown Creeper<br>
+                                        Marbled Godwit<br>
+                                        Lincoln's Sparrow<br>
+                                        Pied-billed Grebe<br>
+                                        Varied Thrush<br>
+                                        Costa's Hummingbird<br>
+                                        Blue-winged Teal<br>
+                                        Common Raven<br>
+                                        Tennessee Warbler<br>
+                                        Red-necked Grebe<br>
+                                        Dickcissel<br>
+                                        Tree Swallow<br>
+                                        Solitary Sandpiper<br>
+                                        Vesper Sparrow<br>
+                                        Yellow-breasted Chat<br>
+                                        House Wren<br>
+                                        Surf Scoter
+                                    </strong></p>
+                                </div>
+                            </div>
+                            <div class="col-lg-8 offset-lg-2">
+                                <hr class="colored">
+                                <h4><a href="/">Return Home</a></h4>
+                                <!-- <p style="font-size: 24px;"><strong><a href="/">Return Home</a></strong></p> -->
+                                <br>
+                                <button type="button" class="btn btn-primary" data-dismiss="modal"><i class="fa fa-times"></i> Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- scripts for Google Analytics -->
+
+    <script>
+        (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+        (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+        m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+        })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
+
+        ga('create', 'UA-102221515-1', 'auto');
+        ga('send', 'pageview');
+    </script>
+
+    <!-- Bootstrap core JavaScript -->
+    <script src="{{url_for('static', filename='../static/vendor/jquery/jquery.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/tether/tether.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/bootstrap/js/bootstrap.min.js')}}"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="{{url_for('static', filename='../static/vendor/jquery.easing/jquery.easing.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/owl-carousel/owl.carousel.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/magnific-popup/jquery.magnific-popup.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/vide/jquery.vide.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/mixitup/mixitup.min.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/vendor/wowjs/wow.min.js')}}"></script>
+
+    <!-- Contact form JavaScript -->
+    <script src="{{url_for('static', filename='../static/js/contact_me.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/jqBootstrapValidation.js')}}"></script>
+
+    <!-- Custom scripts for this theme -->
+    <script src="{{url_for('static', filename='../static/js/vitality.js')}}"></script>
+    <script src="{{url_for('static', filename='../static/js/vitality-mixitup.js')}}"></script>
+
+</body>
+
+</html>

@@ -5,9 +5,11 @@ import os
 import sys
 import pickle
 import io
+import cv2
 
 import numpy as np
 import pandas as pd
+import tensorflow as tf
 
 from flask import Flask, render_template, request, redirect, send_from_directory, jsonify, Response, g, make_response
 from flask_restful import Resource, Api
@@ -37,7 +39,10 @@ app.config['MAX_CONTENT_PATH'] = 4000000
 
 app.config['SEND_FILE_MAX_AGE_DEFAULT'] = 3
 
-
+# helper function
+def allowed_file(filename):
+    return '.' in filename and \
+           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
 
 # index page
 @app.route('/')
@@ -47,11 +52,7 @@ def index():
     #     return redirect("/login")
     return render_template('index.html')
 
-def allowed_file(filename):
-    return '.' in filename and \
-           filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
-
-
+#results page
 @app.route('/results', methods = ["GET", "POST"])
 def results():
     if request.method == 'POST':
@@ -69,9 +70,26 @@ def results():
             filename = secure_filename(file.filename)
             file_path = os.path.join(app.config['UPLOAD_FOLDER'], filename)
             file.save(file_path)
-            processed = preprocess_image('../{}'.format(file_path))
+
+            cropped, score, class_ = crop_image('../{}'.format(file_path), detection_graph)
+
+            if class_ != 16.:
+                return render_template('tryagain.html')
+            if score < 0.5:
+                return render_template('tryagain.html')
+            if cropped is None:
+                return render_template('tryagain.html')
+
+            cv2.imwrite('static/img/cropped/{}'.format(filename), cropped)
+            upload_cropped = 'static/img/cropped/{}'.format(filename)
+
+            processed = preprocess_image(cropped)
+
             pred = model.predict(processed).flatten()
             top_keys, top_perc = return_top_n(pred)
+
+            if top_perc[0] <= 0.2:
+                return render_template('speciesnotfound.html')
 
             cursor1 = web_data.find_one({'id':int(top_keys[0])})
             cursor2 = web_data.find_one({'id':int(top_keys[1])})
@@ -105,11 +123,17 @@ def results():
 
             likelihoods = {'conf1': conf_fxn(top_perc[0]), 'perc1': round(top_perc[0]*100, 2), 'conf2': conf_fxn(top_perc[1]), 'perc2': round(top_perc[1]*100, 2), 'conf3': conf_fxn(top_perc[2]), 'perc3': round(top_perc[2]*100, 2),}
 
-            return render_template('results.html', bird1 = cursor1, bird2 = cursor2, bird3 = cursor3, pics1 = images1, pics2 = images2, pics3 = images3, how_conf = likelihoods)
-    # global logged_In
-    # if logged_In != True:
-    #     return redirect("/login")
-    return render_template('results.html')
+            return render_template('results.html', bird1 = cursor1, bird2 = cursor2, bird3 = cursor3, pics1 = images1, pics2 = images2, pics3 = images3, how_conf = likelihoods, preview_img = upload_cropped)
+
+# try again page
+@app.route('/tryagain')
+def tryagain():
+    return render_template('tryagain.html')
+
+# not found page
+@app.route('/speciesnotfound')
+def speciesnotfound():
+    return render_template('speciesnotfound.html')
 
 
 
@@ -119,7 +143,22 @@ if __name__ == '__main__':
     db = client.get_default_database()
     web_data = db['web_data']
 
-    #b_dict = load_dict()
+    b_dict = load_dict()
+    # Path to frozen detection graph. This is the actual model that is used for the object detection.
+    PATH_TO_CKPT = '/usr/local/lib/python3.5/dist-packages/tensorflow/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017/frozen_inference_graph.pb'
 
+    print('\n##### Loading detection_graph into memory #####')
+    # Load a (frozen) Tensorflow model into memory
+    detection_graph = tf.Graph()
+    with detection_graph.as_default():
+        od_graph_def = tf.GraphDef()
+        with tf.gfile.GFile(PATH_TO_CKPT, 'rb') as fid:
+            serialized_graph = fid.read()
+            od_graph_def.ParseFromString(serialized_graph)
+            tf.import_graph_def(od_graph_def, name='')
+
+    print('\n##### Loading frozen model into memory #####')
+    # Load a (frozen) Tensorflow model into memory
     model = load_model('../data/vgg16-top200-single-SGD.h5')
+
     app.run(host='0.0.0.0', port=80, threaded=True)

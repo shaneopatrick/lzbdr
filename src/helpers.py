@@ -27,6 +27,32 @@ def retrieve_from_S3(path):
     X = np.load(path)
     return X
 
+def _center_image(img, new_size=[224, 224]):
+    '''
+    Helper function. Takes rectangular image resized to be max length on at least one side and centers it in a black square.
+    Input: Image (usually rectangular - if square, this function is not needed).
+    Output: Image, centered in square of given size with black empty space (if rectangular).
+    '''
+    row_buffer = (new_size[0] - img.shape[0]) // 2
+    col_buffer = (new_size[1] - img.shape[1]) // 2
+    centered = np.zeros((224, 224, 3), dtype=np.uint8)
+    centered[row_buffer:(row_buffer + img.shape[0]), col_buffer:(col_buffer + img.shape[1])] = img
+    return centered
+
+def resize_image_to_square(img, new_size=((224, 224))):
+    '''
+    Resizes images without changing aspect ratio. Centers image in square black box.
+    Input: Image, desired new size (new_size = [height, width]))
+    Output: Resized image, centered in black box with dimensions new_size
+    '''
+    if(img.shape[0] > img.shape[1]):
+        tile_size = (int(img.shape[1]*new_size[1]/img.shape[0]),new_size[1])
+    else:
+        tile_size = (new_size[1], int(img.shape[0]*new_size[1]/img.shape[1]))
+    # print(cv2.resize(img, dsize=tile_size))
+    return _center_image(cv2.resize(img, dsize=tile_size), new_size)
+
+
 def crop_square(img, fit_for_test=False):
     if fit_for_test:
         target_size = (224, 224)
@@ -44,6 +70,7 @@ def crop_square(img, fit_for_test=False):
         output = img
         output_final = cv2.resize(output, target_size)
     return output_final
+
 
 def preprocess_image(filepath):
     img_full_path = '../app/uploads/{}'.format(filepath)

@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 
+
 <head>
 
     <meta charset="utf-8">
@@ -117,7 +118,7 @@
     <section class="page-section" id="identify">
         <div class="container-fluid">
             <div class="wow fadeIn text-center">
-                <h1>An app for the bird enthusiast</h1>
+                <h1>An app for the bird enthusiest</h1>
                 <p class="mb-0">[... who doesn't have time to become a bird expert ...]</p>
             </div>
             <hr class="colored">
@@ -128,7 +129,8 @@
                     <div class="wow fadeIn px-4 pb-4 pb-lg-0 h-100" data-wow-delay=".2s">
                         <i class="fa fa-camera fa-4x"></i>
                         <h3>Identify Bird</h3>
-                        <p class="mb-0">Begin by clicking the button below. <br>For best results crop photo so the bird fills most of the frame.</p>
+                        <!-- <br> -->
+                        <p class="mb-0">Begin by clicking the button below.</p>
                         <br>
                         <br>
                         <form action="/results" method="POST" enctype="multipart/form-data" id="submit-form">
@@ -196,8 +198,8 @@
                             <h3 class="media-heading">Upload Picture</h3>
                             <ul>
                                 <li>Take photo of bird</li>
-                                <li>Crop so bird fills frame</li>
                                 <li>Upload photo to app</li>
+                                <li>Detect and auto-crop bird</li>
                             </ul>
                         </div>
                     </div>
@@ -225,16 +227,16 @@
 
 
     <!-- CNN Section -->
-    <section class="page-section pricing" style="background-image: url('../static/img/agency/backgrounds/bg-cnn.jpg'); padding-bottom: 180px;">
+    <!-- <section class="page-section pricing" style="background-image: url('../static/img/agency/backgrounds/bg-cnn.jpg'); padding-bottom: 180px;">
         <div class="container wow fadeIn">
             <div class="text-center">
                 <h2>Convolutional Neural Networks</h2>
                 <hr class="colored">
                 <p>Lazybirder operates on top of a convolutional neural network. Thanks to technological advances in recent years we are able to create networks which can "learn" a number of different tasks. Convolutional neural networks (CNNs) are specific to image processing and can do some amazing things. Here's a quick (and very simplified) rundown of what makes up a CNN.</p>
             </div>
-            <div class="row">
+            <div class="row"> -->
                 <!-- Pricing Table 1 -->
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="pricing-item featured-first">
                         <h3>Neurons</h3>
                         <hr class="colored">
@@ -243,9 +245,9 @@
                         <br><br>
                         <p style="font-size: 10px;">(<a href="http://natureofcode.com/book/chapter-10-neural-networks/">source</a>)</p>
                     </div>
-                </div>
+                </div> -->
                 <!-- Pricing Table 2 -->
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="pricing-item featured">
                         <h3>Process Images</h3>
                         <hr class="colored">
@@ -254,9 +256,9 @@
                         <br><br>
                         <p style="font-size: 10px;">(<a href="https://github.com/vdumoulin/conv_arithmetic">source</a>)</p>
                     </div>
-                </div>
+                </div> -->
                 <!-- Pricing Table 3 -->
-                <div class="col-md-4">
+                <!-- <div class="col-md-4">
                     <div class="pricing-item featured-last">
                         <h3>Architecture</h3>
                         <hr class="colored">
@@ -270,11 +272,11 @@
                 </div>
             </div>
         </div>
-    </section>
+    </section> -->
 
 
     <!-- References Section -->
-    <section class="page-section testimonials bg-faded" id="references">
+    <section class="page-section testimonials bg-faded text-white" style="background-image: url('../static/img/agency/backgrounds/bg-cnn.jpg'); padding-bottom: 180px;" id="references">
         <div class="container wow fadeIn">
             <div class="row">
                 <div class="col-lg-10 offset-lg-1">
@@ -310,7 +312,7 @@
                     <i class="fa fa-angle-double-down fa-3x" aria-hidden="true"></i>
                     <br>
                     <br>
-                    <a href="#" class="btn btn-primary">Donate</a>
+                    <a href="http://www.birds.cornell.edu/page.aspx?pid=1599" target="_blank"class="btn btn-primary">Donate</a>
                 </div>
             </div>
         </div>
@@ -359,8 +361,8 @@
         ga('send', 'pageview');
     </script>
 
-
     <!-- scripts for image preview -->
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js">
     </script>
     <script>
