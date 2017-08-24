@@ -73,12 +73,14 @@ def crop_square(img, fit_for_test=False):
     return output_final
 
 
-def preprocess_image(filepath):
-    img_full_path = '../app/uploads/{}'.format(filepath)
-    image = cv2.imread(img_full_path)
-    image = crop_square(image, True)
+def preprocess_image(img):
+    # img_full_path = '../app/uploads/{}'.format(filepath)
+    # image = cv2.imread(img_full_path)
+    image = resize_image_to_square(img)
     image = image/255
     image = image.reshape((1,) + image.shape)
+    # cv2.imshow('processed', image)
+    # cv2.waitKey(3000)
     return image
 
 
