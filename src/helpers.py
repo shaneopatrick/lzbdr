@@ -83,7 +83,7 @@ def preprocess_image(filepath):
 
 
 def crop_image(filepath, detection_graph):
-    img_full_path = '../z_app/uploads/{}'.format(filepath)
+    img_full_path = '../app/uploads/{}'.format(filepath)
     image_np = cv2.imread(img_full_path)
     with detection_graph.as_default():
         with tf.Session(graph=detection_graph) as sess:
