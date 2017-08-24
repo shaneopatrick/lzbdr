@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import boto
 import os
 import pickle
+import tensorflow as tf
 
 access_key = os.environ['AWS_ACCESS_KEY_ID']
 sec_access_key = os.environ['AWS_SECRET_ACCESS_KEY']
