@@ -148,15 +148,15 @@ if __name__ == '__main__':
     # Path to frozen detection graph. This is the actual model that is used for the object detection.
     PATH_TO_CKPT = '/usr/local/lib/python3.5/dist-packages/tensorflow/models/object_detection/ssd_mobilenet_v1_coco_11_06_2017/frozen_inference_graph.pb'
 
-    print('\n##### Loading detection_graph into memory #####')
-    # Load a (frozen) Tensorflow model into memory
-    detection_graph = tf.Graph()
-    with detection_graph.as_default():
-        od_graph_def = tf.GraphDef()
-        with tf.gfile.GFile(PATH_TO_CKPT, 'rb') as fid:
-            serialized_graph = fid.read()
-            od_graph_def.ParseFromString(serialized_graph)
-            tf.import_graph_def(od_graph_def, name='')
+    # print('\n##### Loading detection_graph into memory #####')
+    # # Load a (frozen) Tensorflow model into memory
+    # detection_graph = tf.Graph()
+    # with detection_graph.as_default():
+    #     od_graph_def = tf.GraphDef()
+    #     with tf.gfile.GFile(PATH_TO_CKPT, 'rb') as fid:
+    #         serialized_graph = fid.read()
+    #         od_graph_def.ParseFromString(serialized_graph)
+    #         tf.import_graph_def(od_graph_def, name='')
 
     print('\n##### Loading frozen model into memory #####')
     # Load a (frozen) Tensorflow model into memory
