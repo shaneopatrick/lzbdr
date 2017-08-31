@@ -106,9 +106,9 @@ The VGG16 trained on the CUB200 dataset yeiled the following results.
 
 >_trained on 8841 images, tested on 2947 images_
 
-* Test accuracy:  0.68
-* Top 5 accuracy: 0.78
-* Top 3 accuracy: 0.72
+* Test accuracy:  0.46
+* Top 5 accuracy: 0.57
+* Top 3 accuracy: 0.51
 
 At this point it was time to add more data. The NABirds dataset has 60-140 images for 404 classes of birds. However due to computational limitation on AWS ec2 instances I was never able to train a model on the full 404 classes. I decided to stay with my original task of classifying 200 classes although the class labels (bird species) themselves were changed. I selected the 200 classes based on the number of images available for the class, using the classes with the most data. Utilizing the NABirds dataset my training data went from 8841 images to 23569 images. This yeiled the best results to date.
 
