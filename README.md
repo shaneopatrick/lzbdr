@@ -152,7 +152,7 @@ I was very pleased with this accuracy rate and decided to incorporate the Top 3 
 
 ### Web app
 
-#### [www.lazybirder.club](http://www.lazybirder.club/)
+#### [www.lazybirder.com](http://www.lazybirder.com/)
 <br>
 Lazybirder is built with Flask, a microframework for running applications with in Python. The site uses a Bootstrap 4 template from www.wrapbootstrap.com.
 
